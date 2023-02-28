@@ -7,6 +7,7 @@ import {
   ListRenderItem,
   Image,
 } from "react-native";
+import ErrorMessage from "../../components/ErrorMessage";
 import HotelItem from "../../components/HotelItem";
 import { Hotel } from "../../interfaces/Hotel/Hotel";
 import styles from "./HomeScreen.style";
@@ -77,6 +78,13 @@ const HomeScreen = ({ navigation }) => {
         <View style={loaderContainer}>
           <ActivityIndicator size="large" />
         </View>
+      )}
+      {error && (
+        <ErrorMessage
+          onRetryPress={() => {
+            getHotels();
+          }}
+        />
       )}
       <FlatList
         data={hotels}
