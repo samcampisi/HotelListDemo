@@ -39,7 +39,6 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
   },
   title: {
-    marginTop: 8,
     fontSize: 14,
     lineHeight: 18,
     fontWeight: "bold",

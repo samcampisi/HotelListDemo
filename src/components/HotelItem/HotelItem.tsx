@@ -10,6 +10,7 @@ import {
 import { CURRENCY_SYMBOLS } from "../../constants/currencies";
 import { Hotel } from "../../interfaces/Hotel/Hotel";
 import InfoLine from "../InfoLine";
+import Stars from "../Stars";
 
 import styles from "./HotelItem.style";
 
@@ -66,13 +67,10 @@ const HotelItem = ({
             {name.toUpperCase()}
           </Text>
           <View>
+            <Stars value={stars} />
             <InfoLine
               label={`${location.address}, ${location.city}`}
               icon={require("../../../assets/icons/location.png")}
-            />
-            <InfoLine
-              label={String(stars)}
-              icon={require("../../../assets/icons/star.png")}
             />
             <InfoLine
               label={String(userRating)}
