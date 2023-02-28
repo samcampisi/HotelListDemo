@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import theme from "../../theme/theme";
 
 export default StyleSheet.create({
   container: {
@@ -7,5 +8,10 @@ export default StyleSheet.create({
   loaderContainer: {
     flex: 1,
     justifyContent: "center",
+  },
+  headerText: {
+    color: theme.colors.main,
+    textAlign: "center",
+    marginVertical: 16,
   },
 });

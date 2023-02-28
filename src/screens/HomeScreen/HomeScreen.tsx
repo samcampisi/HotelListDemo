@@ -11,7 +11,7 @@ import { Hotel } from "../../interfaces/Hotel/Hotel";
 import styles from "./HomeScreen.style";
 
 const HomeScreen = ({ navigation }) => {
-  const { container, loaderContainer } = styles;
+  const { container, loaderContainer, headerText } = styles;
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,6 +41,10 @@ const HomeScreen = ({ navigation }) => {
     getHotels();
   }, []);
 
+  const renderHeader = () => {
+    return <Text style={headerText}>{hotels?.length || "0"} hotels found</Text>;
+  };
+
   const renderItem: ListRenderItem<Hotel> = ({ item }) => {
     return <HotelItem hotel={item} />;
   };
@@ -56,6 +60,7 @@ const HomeScreen = ({ navigation }) => {
       )}
       <FlatList
         data={hotels}
+        ListHeaderComponent={renderHeader}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
