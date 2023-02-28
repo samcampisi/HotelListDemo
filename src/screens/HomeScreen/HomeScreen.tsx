@@ -1,5 +1,13 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList,
+  ListRenderItem,
+} from "react-native";
+import HotelItem from "../../components/HotelItem";
+import { Hotel } from "../../interfaces/Hotel/Hotel";
 import styles from "./HomeScreen.style";
 
 const HomeScreen = ({ navigation }) => {
@@ -33,6 +41,12 @@ const HomeScreen = ({ navigation }) => {
     getHotels();
   }, []);
 
+  const renderItem: ListRenderItem<Hotel> = ({ item }) => {
+    return <HotelItem hotel={item} />;
+  };
+
+  const keyExtractor = ({ id }: Hotel) => `${id}`;
+
   return (
     <View testID={"HomeScreen"} style={container}>
       {isLoading && (
@@ -40,7 +54,12 @@ const HomeScreen = ({ navigation }) => {
           <ActivityIndicator size="large" />
         </View>
       )}
-      <Text>{JSON.stringify(hotels)}</Text>
+      <FlatList
+        data={hotels}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
