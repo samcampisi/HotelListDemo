@@ -14,4 +14,14 @@ export default StyleSheet.create({
     textAlign: "center",
     marginVertical: 16,
   },
+  emptyComponentContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyComponentIcon: {
+    width: 40,
+    height: 40,
+    alignSelf: "center",
+  },
 });
