@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,7 +7,9 @@ import {
   Pressable,
   Image,
 } from "react-native";
+import { CURRENCY_SYMBOLS } from "../../constants/currencies";
 import { Hotel } from "../../interfaces/Hotel/Hotel";
+import InfoLine from "../InfoLine";
 
 import styles from "./HotelItem.style";
 
@@ -17,7 +19,20 @@ const HotelItem = ({
   testID,
   containerStyle,
 }: HotelItemProps) => {
-  const { cardContainer, imageContainer, image, infoArea, title } = styles;
+  const {
+    cardContainer,
+    horizontal,
+    imageContainer,
+    image,
+    defaultImage,
+    infoArea,
+    title,
+    pricetag,
+    pricetagText,
+  } = styles;
+  const { gallery, name, currency, price, location, stars, userRating } = hotel;
+
+  const [imageError, setImageError] = useState(false);
 
   return (
     <View style={[cardContainer, containerStyle]}>
@@ -26,8 +41,8 @@ const HotelItem = ({
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.2 : 1,
-            flexDirection: "row",
           },
+          horizontal,
         ]}
         onPress={() => {
           if (onPress) {
@@ -36,12 +51,40 @@ const HotelItem = ({
         }}
       >
         <View style={imageContainer}>
-          <Image source={{ uri: hotel.gallery[0] }} style={image} />
+          <Image
+            source={
+              imageError
+                ? require("../../../assets/defaultHotel.png")
+                : { uri: gallery[0] }
+            }
+            style={[image, imageError && defaultImage]}
+            onError={() => setImageError(true)}
+          />
         </View>
         <View style={infoArea}>
           <Text style={title} numberOfLines={2}>
-            {hotel.name.toUpperCase()}
+            {name.toUpperCase()}
           </Text>
+          <View>
+            <InfoLine
+              label={`${location.address}, ${location.city}`}
+              icon={require("../../../assets/icons/location.png")}
+            />
+            <InfoLine
+              label={String(stars)}
+              icon={require("../../../assets/icons/star.png")}
+            />
+            <InfoLine
+              label={String(userRating)}
+              icon={require("../../../assets/icons/rating.png")}
+            />
+          </View>
+          <View style={pricetag}>
+            <Text style={pricetagText}>
+              {CURRENCY_SYMBOLS[currency] || currency}
+              {price}
+            </Text>
+          </View>
         </View>
       </Pressable>
     </View>

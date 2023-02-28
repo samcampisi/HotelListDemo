@@ -4,6 +4,7 @@ export default {
     background: "#F1F1F1",
     main: "#333333",
     neutral_light: "#FFFFFF",
+    neutral_grey: "#999999",
     secondary: "#8C2E68",
   },
   hitSlop: {

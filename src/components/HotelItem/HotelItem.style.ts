@@ -14,6 +14,9 @@ export default StyleSheet.create({
     marginHorizontal: 8,
     borderRadius: 4,
   },
+  horizontal: {
+    flexDirection: "row",
+  },
   imageContainer: {
     width: "50%",
     height: "100%",
@@ -23,6 +26,11 @@ export default StyleSheet.create({
     resizeMode: "cover",
     borderTopLeftRadius: 4,
     borderBottomLeftRadius: 4,
+  },
+  defaultImage: {
+    tintColor: theme.colors.neutral_grey,
+    maxWidth: "100%",
+    resizeMode: "center",
   },
   infoArea: {
     flex: 1,
@@ -36,5 +44,15 @@ export default StyleSheet.create({
     lineHeight: 18,
     fontWeight: "bold",
     color: theme.colors.main,
+  },
+  pricetag: {
+    backgroundColor: theme.colors.accent,
+    padding: 8,
+    borderRadius: 4,
+    alignSelf: "flex-end",
+  },
+  pricetagText: {
+    color: theme.colors.neutral_light,
+    fontWeight: "bold",
   },
 });
