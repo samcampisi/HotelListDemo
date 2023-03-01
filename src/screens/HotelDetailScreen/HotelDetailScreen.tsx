@@ -1,14 +1,75 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
+import Carousel from "../../components/Carousel";
+import InfoLine from "../../components/InfoLine";
+import Location from "../../components/Location";
+import Stars from "../../components/Stars";
+import UserRating from "../../components/UserRating";
+import { CURRENCY_SYMBOLS } from "../../constants/currencies";
+import styles from "./HotelDetailScreen.style";
 
-const HomeScreen = (props: HomeScreenProps) => {
+const HotelDetailScreen = ({ route }) => {
+  const {
+    container,
+    section,
+    bottom,
+    bottomText,
+    infoDetails,
+    contactView,
+    customFlippedIcon,
+  } = styles;
+
+  const {
+    gallery,
+    currency,
+    price,
+    location,
+    stars,
+    userRating,
+    checkIn,
+    checkOut,
+    contact,
+  } = route.params;
+
   return (
-    <View testID={"HomeScreen"}>
-      <Text>Hotel Detail Screen</Text>
+    <View style={container}>
+      <ScrollView testID={"HotelDetailScreen"}>
+        <Carousel gallery={gallery} />
+        <View style={[section, infoDetails]}>
+          <Stars value={stars} />
+          <UserRating rating={userRating} />
+          <InfoLine
+            label={`Check-in: ${checkIn.from}-${checkIn.to}`}
+            icon={require("../../../assets/icons/clock.png")}
+            iconStyle={customFlippedIcon}
+          />
+          <InfoLine
+            label={`Check-out: ${checkOut.from}-${checkOut.to}`}
+            icon={require("../../../assets/icons/clock.png")}
+          />
+        </View>
+        <View style={section}>
+          <Location location={location} />
+        </View>
+        <View style={[section, infoDetails, contactView]}>
+          <InfoLine
+            label={contact.phoneNumber}
+            icon={require("../../../assets/icons/phone.png")}
+          />
+          <InfoLine
+            label={contact.email}
+            icon={require("../../../assets/icons/mail.png")}
+          />
+        </View>
+      </ScrollView>
+      <View style={bottom}>
+        <Text style={bottomText}>
+          {CURRENCY_SYMBOLS[currency] || currency}
+          {price}
+        </Text>
+      </View>
     </View>
   );
 };
 
-export interface HomeScreenProps {}
-
-export default HomeScreen;
+export default HotelDetailScreen;

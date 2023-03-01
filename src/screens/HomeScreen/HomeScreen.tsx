@@ -10,6 +10,7 @@ import {
 import ErrorMessage from "../../components/ErrorMessage";
 import HotelItem from "../../components/HotelItem";
 import { Hotel } from "../../interfaces/Hotel/Hotel";
+import SCREEN_NAMES from "../../constants/screenNames";
 import styles from "./HomeScreen.style";
 
 const HomeScreen = ({ navigation }) => {
@@ -23,7 +24,10 @@ const HomeScreen = ({ navigation }) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [hotels, setHotels] = useState(null);
+  const [hotels, setHotels] = useState([]);
+
+  const onHotelPress = (hotel: Hotel) =>
+    navigation.navigate(SCREEN_NAMES.HOTEL_DETAIL_SCREEN, hotel);
 
   const getHotels = useCallback(async () => {
     setError(null);
@@ -51,11 +55,13 @@ const HomeScreen = ({ navigation }) => {
 
   const renderHeader = () => {
     const total = hotels?.length;
-    return total ? <Text style={headerText}>{total} hotels found</Text> : null;
+    return !isLoading && total ? (
+      <Text style={headerText}>{total} hotels found</Text>
+    ) : null;
   };
 
   const renderEmptyComponent = () => {
-    return (
+    return !isLoading ? (
       <View>
         <Image
           source={require("../../../assets/icons/search.png")}
@@ -63,11 +69,11 @@ const HomeScreen = ({ navigation }) => {
         />
         <Text>No hotels were found</Text>
       </View>
-    );
+    ) : null;
   };
 
   const renderItem: ListRenderItem<Hotel> = ({ item }) => {
-    return <HotelItem hotel={item} />;
+    return <HotelItem hotel={item} onPress={onHotelPress} />;
   };
 
   const keyExtractor = ({ id }: Hotel) => `${id}`;
