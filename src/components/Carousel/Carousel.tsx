@@ -34,7 +34,7 @@ const Carousel = ({
 
   return (
     <View testID={testID} style={styles.container}>
-      {gallery.length && (
+      {gallery.length > 1 && (
         <View
           style={[styles.indicatorsContainer, indicatorsStyle]}
           testID={`${testID}-dots`}
