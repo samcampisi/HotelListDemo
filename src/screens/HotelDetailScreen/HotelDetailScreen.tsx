@@ -4,6 +4,7 @@ import Carousel from "../../components/Carousel";
 import InfoLine from "../../components/InfoLine";
 import Location from "../../components/Location";
 import Stars from "../../components/Stars";
+import UserRating from "../../components/UserRating";
 import { CURRENCY_SYMBOLS } from "../../constants/currencies";
 import styles from "./HotelDetailScreen.style";
 
@@ -36,10 +37,7 @@ const HotelDetailScreen = ({ route }) => {
         <Carousel gallery={gallery} />
         <View style={[section, infoDetails]}>
           <Stars value={stars} />
-          <InfoLine
-            label={`User rating: ${userRating}`}
-            icon={require("../../../assets/icons/rating.png")}
-          />
+          <UserRating rating={userRating} />
           <InfoLine
             label={`Check-in: ${checkIn.from}-${checkIn.to}`}
             icon={require("../../../assets/icons/clock.png")}
