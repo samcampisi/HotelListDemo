@@ -7,7 +7,7 @@ export default StyleSheet.create({
     marginBottom: 4,
   },
   empty: {
-    tintColor: theme.colors.background,
+    tintColor: theme.colors.empty_grey,
   },
   filled: {
     tintColor: theme.colors.gold,

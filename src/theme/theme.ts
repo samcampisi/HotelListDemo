@@ -2,6 +2,7 @@ export default {
   colors: {
     accent: "#CC3D95",
     background: "#F1F1F1",
+    empty_grey: "#DDDDDD",
     error: "#842A24",
     gold: "#C6A440",
     main: "#333333",

@@ -1,10 +1,9 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
-import MapView, { Marker } from "react-native-maps";
 import Carousel from "../../components/Carousel";
 import InfoLine from "../../components/InfoLine";
+import Location from "../../components/Location";
 import Stars from "../../components/Stars";
-import theme from "../../theme/theme";
 import { CURRENCY_SYMBOLS } from "../../constants/currencies";
 import styles from "./HotelDetailScreen.style";
 
@@ -12,11 +11,11 @@ const HotelDetailScreen = ({ route }) => {
   const {
     container,
     section,
-    mapView,
     bottom,
     bottomText,
     infoDetails,
     contactView,
+    customFlippedIcon,
   } = styles;
 
   const {
@@ -38,40 +37,21 @@ const HotelDetailScreen = ({ route }) => {
         <View style={[section, infoDetails]}>
           <Stars value={stars} />
           <InfoLine
-            label={String(userRating)}
+            label={`User rating: ${userRating}`}
             icon={require("../../../assets/icons/rating.png")}
           />
           <InfoLine
-            label={"Check-in / Check-out"}
+            label={`Check-in: ${checkIn.from}-${checkIn.to}`}
             icon={require("../../../assets/icons/clock.png")}
+            iconStyle={customFlippedIcon}
           />
           <InfoLine
-            label={`${checkIn.from}-${checkIn.to} / ${checkOut.from}-${checkOut.to}`}
+            label={`Check-out: ${checkOut.from}-${checkOut.to}`}
             icon={require("../../../assets/icons/clock.png")}
           />
         </View>
         <View style={section}>
-          <InfoLine
-            label={`${location.address}, ${location.city}`}
-            icon={require("../../../assets/icons/location.png")}
-          />
-          <MapView
-            style={mapView}
-            initialRegion={{
-              latitude: location.latitude,
-              longitude: location.longitude,
-              latitudeDelta: 0.01,
-              longitudeDelta: 0.01,
-            }}
-          >
-            <Marker
-              coordinate={{
-                latitude: location.latitude,
-                longitude: location.longitude,
-              }}
-              pinColor={theme.colors.accent}
-            />
-          </MapView>
+          <Location location={location} />
         </View>
         <View style={[section, infoDetails, contactView]}>
           <InfoLine

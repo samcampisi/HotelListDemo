@@ -12,12 +12,11 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     paddingBottom: 16,
   },
-  mapView: {
-    width: "100%",
-    height: 240,
-  },
   contactView: {
     paddingBottom: 80,
+  },
+  customFlippedIcon: {
+    transform: [{ scaleX: -1 }],
   },
   bottom: {
     position: "absolute",
