@@ -3,6 +3,8 @@ import { View, StyleProp, ViewStyle, Text, Pressable } from "react-native";
 
 import styles from "./ErrorMessage.style";
 
+export const DEFAULT_MESSAGE = "Sorry! There was an error getting this content";
+
 const ErrorMessage = ({
   text,
   onRetryPress,
@@ -13,11 +15,9 @@ const ErrorMessage = ({
 
   return (
     <View style={[container, containerStyle]} testID={testID}>
-      <Text style={textStyle}>
-        {text || "Sorry! There was an error getting this content"}
-      </Text>
+      <Text style={textStyle}>{text || DEFAULT_MESSAGE}</Text>
       <Pressable
-        testID={testID}
+        testID={`${testID}-retry`}
         style={({ pressed }) => [
           {
             opacity: pressed ? 0.2 : 1,
