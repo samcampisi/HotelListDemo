@@ -8,6 +8,7 @@ import {
   ImageResizeMode,
 } from "react-native";
 import PagerView, { PagerViewOnPageScrollEvent } from "react-native-pager-view";
+import HotelImage from "../HotelImage";
 
 import styles from "./Carousel.style";
 
@@ -58,11 +59,7 @@ const Carousel = ({
         {gallery.map((item: string, index: number) => {
           return (
             <View key={index} testID={`${testID}-item-${index}`}>
-              <Image
-                source={{ uri: item }}
-                style={[styles.image, imageStyle]}
-                resizeMode={imageResize || "cover"}
-              />
+              <HotelImage url={item} imageStyle={[styles.image, imageStyle]} />
             </View>
           );
         })}

@@ -21,17 +21,6 @@ export default StyleSheet.create({
     width: "50%",
     height: "100%",
   },
-  image: {
-    height: "100%",
-    resizeMode: "cover",
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
-  },
-  defaultImage: {
-    tintColor: theme.colors.neutral_grey,
-    maxWidth: "100%",
-    resizeMode: "center",
-  },
   infoArea: {
     flex: 1,
     justifyContent: "space-between",

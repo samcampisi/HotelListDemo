@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleProp,
-  ViewStyle,
-  Pressable,
-  Image,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleProp, ViewStyle, Pressable } from "react-native";
 import { CURRENCY_SYMBOLS } from "../../constants/currencies";
 import { Hotel } from "../../interfaces/Hotel/Hotel";
+import HotelImage from "../HotelImage";
 import InfoLine from "../InfoLine";
 import Stars from "../Stars";
 
@@ -24,16 +18,12 @@ const HotelItem = ({
     cardContainer,
     horizontal,
     imageContainer,
-    image,
-    defaultImage,
     infoArea,
     title,
     pricetag,
     pricetagText,
   } = styles;
   const { gallery, name, currency, price, location, stars, userRating } = hotel;
-
-  const [imageError, setImageError] = useState(false);
 
   return (
     <View style={[cardContainer, containerStyle]}>
@@ -52,15 +42,7 @@ const HotelItem = ({
         }}
       >
         <View style={imageContainer}>
-          <Image
-            source={
-              imageError
-                ? require("../../../assets/defaultHotel.png")
-                : { uri: gallery[0] }
-            }
-            style={[image, imageError && defaultImage]}
-            onError={() => setImageError(true)}
-          />
+          <HotelImage url={gallery[0]} />
         </View>
         <View style={infoArea}>
           <Text style={title} numberOfLines={2}>
