@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useCallback, useState, useContext } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import HotelItem from "../../components/HotelItem";
 import { Hotel } from "../../interfaces/Hotel/Hotel";
 import SCREEN_NAMES from "../../constants/screenNames";
 import styles from "./HomeScreen.style";
+import { HotelsContext } from "../../contexts/HotelsContext";
+import useFetchHotels from "../../hooks/useFetchHotels";
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -22,35 +24,15 @@ const HomeScreen = ({ navigation }) => {
     emptyComponentContainer,
   } = styles;
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [hotels, setHotels] = useState([]);
+  const { isLoading, error, hotels } = useContext(HotelsContext);
 
   const onHotelPress = (hotel: Hotel) =>
     navigation.navigate(SCREEN_NAMES.HOTEL_DETAIL_SCREEN, hotel);
 
-  const getHotels = useCallback(async () => {
-    setError(null);
-    setIsLoading(true);
-
-    try {
-      const res = await (
-        await fetch(
-          "https://run.mocky.io/v3/eef3c24d-5bfd-4881-9af7-0b404ce09507"
-        )
-      ).json();
-
-      setHotels(res);
-    } catch (e) {
-      console.error(e);
-      setError(e);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [setHotels]);
+  const { fetchHotels } = useFetchHotels();
 
   useEffect(() => {
-    getHotels();
+    fetchHotels();
   }, []);
 
   const renderHeader = () => {
@@ -88,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
       {error && (
         <ErrorMessage
           onRetryPress={() => {
-            getHotels();
+            fetchHotels();
           }}
         />
       )}
