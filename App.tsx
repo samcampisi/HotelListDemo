@@ -5,6 +5,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import HotelDetailScreen from "./src/screens/HotelDetailScreen";
 import SCREEN_NAMES from "./src/constants/screenNames";
 import { HotelsProvider } from "./src/contexts/HotelsContext";
+import SortScreen from "./src/screens/SortScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,11 @@ function App() {
             name={SCREEN_NAMES.HOTEL_DETAIL_SCREEN}
             component={HotelDetailScreen}
             options={({ route }) => ({ title: route.params.name })}
+          />
+          <Stack.Screen
+            name={SCREEN_NAMES.SORT_SCREEN}
+            component={SortScreen}
+            options={{ presentation: "modal" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

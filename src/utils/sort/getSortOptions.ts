@@ -1,7 +1,7 @@
-import { DEFAULT, HIGH, ID_KEY, LOW } from "../constants/sortKeys";
-import { Hotel } from "../interfaces/Hotel/Hotel";
-import { SortOption } from "../interfaces/SortOption";
-import { TSortKeys, TSortOrder } from "../types/sort";
+import { DEFAULT, HIGH, ID_KEY, LOW } from "../../constants/sortKeys";
+import { Hotel } from "../../interfaces/Hotel/Hotel";
+import { SortOption } from "../../interfaces/SortOption";
+import { TSortKeys, TSortOrder } from "../../types/sort";
 
 export const getSortOptions = (hotels: Hotel[]): SortOption[] => {
   const sample = hotels[0];

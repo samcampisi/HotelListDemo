@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
 import { HotelsContext } from "../contexts/HotelsContext";
-import { getSortOptions } from "../utils/getSortOptions";
+import { getSortOptions } from "../utils/sort/getSortOptions";
 
 const useFetchHotels = () => {
   const { setIsLoading, setError, setHotels, setSortOptions } =

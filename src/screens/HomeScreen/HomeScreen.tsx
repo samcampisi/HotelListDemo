@@ -15,8 +15,8 @@ import SCREEN_NAMES from "../../constants/screenNames";
 import styles from "./HomeScreen.style";
 import { HotelsContext } from "../../contexts/HotelsContext";
 import useFetchHotels from "../../hooks/useFetchHotels";
-import { SORT_OPTIONS } from "../../constants/sortOptions";
 import { DEFAULT, LOW } from "../../constants/sortKeys";
+import { sortHotels } from "../../utils/sort/sortHotels";
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -27,14 +27,7 @@ const HomeScreen = ({ navigation }) => {
     emptyComponentContainer,
   } = styles;
 
-  const {
-    isLoading,
-    error,
-    hotels,
-    sortOptions,
-    selectedSort,
-    setSelectedSort,
-  } = useContext(HotelsContext);
+  const { isLoading, error, hotels, selectedSort } = useContext(HotelsContext);
 
   const onHotelPress = (hotel: Hotel) =>
     navigation.navigate(SCREEN_NAMES.HOTEL_DETAIL_SCREEN, hotel);
@@ -70,19 +63,17 @@ const HomeScreen = ({ navigation }) => {
 
   const keyExtractor = ({ id }: Hotel) => `${id}`;
 
-  const sorted =
-    selectedSort.id === DEFAULT
-      ? hotels
-      : [...hotels].sort((a: Hotel, b: Hotel) => {
-          if (selectedSort.order === LOW) {
-            return a[selectedSort.id] - b[selectedSort.id];
-          } else {
-            return b[selectedSort.id] - a[selectedSort.id];
-          }
-        });
+  const sorted = sortHotels(selectedSort, hotels);
 
   return (
     <View testID={"HomeScreen"} style={container}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
+        }}
+      >
+        <Text>Go to sort</Text>
+      </TouchableOpacity>
       {isLoading && (
         <View style={loaderContainer}>
           <ActivityIndicator size="large" />
@@ -95,21 +86,6 @@ const HomeScreen = ({ navigation }) => {
           }}
         />
       )}
-      {sortOptions.map((sortOption, index) => {
-        return (
-          <View key={`${sortOption.id}-${index}`}>
-            <TouchableOpacity
-              onPress={() => {
-                setSelectedSort(sortOption);
-              }}
-            >
-              <Text>
-                {SORT_OPTIONS[sortOption.id]} {sortOption.order}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        );
-      })}
       <FlatList
         data={sorted}
         ListHeaderComponent={renderHeader}
