@@ -1,12 +1,8 @@
 import { createContext, useState } from "react";
 import { Hotel } from "../interfaces/Hotel/Hotel";
+import { SortOption } from "../interfaces/SortOption";
 import { DEFAULT, LOW } from "../constants/sortKeys";
 import { TSortKeys, TSortOrder } from "../types/sort";
-
-interface SortOption {
-  id: TSortKeys;
-  order: TSortOrder;
-}
 
 export interface IHotelsContext {
   isLoading: boolean;
