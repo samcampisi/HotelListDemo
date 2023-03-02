@@ -6,7 +6,7 @@ import {
   FlatList,
   ListRenderItem,
   Image,
-  TouchableOpacity,
+  Pressable,
 } from "react-native";
 import ErrorMessage from "../../components/ErrorMessage";
 import HotelItem from "../../components/HotelItem";
@@ -15,8 +15,9 @@ import SCREEN_NAMES from "../../constants/screenNames";
 import styles from "./HomeScreen.style";
 import { HotelsContext } from "../../contexts/HotelsContext";
 import useFetchHotels from "../../hooks/useFetchHotels";
-import { DEFAULT, LOW } from "../../constants/sortKeys";
 import { sortHotels } from "../../utils/sort/sortHotels";
+import { SORT_OPTIONS } from "../../constants/sortOptions";
+import { DEFAULT } from "../../constants/sortKeys";
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -67,13 +68,25 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View testID={"HomeScreen"} style={container}>
-      <TouchableOpacity
+      <Pressable
         onPress={() => {
           navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
         }}
+        style={({ pressed }) => [
+          {
+            opacity: pressed ? 0.2 : 1,
+          },
+        ]}
       >
-        <Text>Go to sort</Text>
-      </TouchableOpacity>
+        <Text>Sort</Text>
+        {selectedSort.id !== DEFAULT && (
+          <Text>
+            {`(${SORT_OPTIONS[selectedSort.id] || selectedSort.id} - ${
+              selectedSort.order
+            })`}
+          </Text>
+        )}
+      </Pressable>
       {isLoading && (
         <View style={loaderContainer}>
           <ActivityIndicator size="large" />
