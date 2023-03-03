@@ -34,7 +34,10 @@ const SortScreen = ({ testID, navigation }: SortScreenProps) => {
 
             {selectedSort.id === sortOption.id &&
               selectedSort.order === sortOption.order && (
-                <View style={indicator} />
+                <View
+                  style={indicator}
+                  testID={`${testID}-indicator-${index}`}
+                />
               )}
           </Pressable>
         );
@@ -45,7 +48,7 @@ const SortScreen = ({ testID, navigation }: SortScreenProps) => {
 
 export interface SortScreenProps {
   testID?: string;
-  navigation: NavigationProp<any, any>;
+  navigation?: NavigationProp<any, any>;
 }
 
 export default SortScreen;
