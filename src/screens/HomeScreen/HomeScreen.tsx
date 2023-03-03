@@ -6,7 +6,6 @@ import {
   FlatList,
   ListRenderItem,
   Image,
-  Pressable,
 } from "react-native";
 import ErrorMessage from "../../components/ErrorMessage";
 import HotelItem from "../../components/HotelItem";
@@ -18,6 +17,7 @@ import useFetchHotels from "../../hooks/useFetchHotels";
 import { sortHotels } from "../../utils/sort/sortHotels";
 import { SORT_OPTIONS } from "../../constants/sortOptions";
 import { DEFAULT } from "../../constants/sortKeys";
+import TopButton from "../../components/TopButton";
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -68,25 +68,15 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View testID={"HomeScreen"} style={container}>
-      <Pressable
+      <TopButton
+        title="SORT"
+        subtitle={`(${SORT_OPTIONS[selectedSort.id] || selectedSort.id}${
+          selectedSort.id !== DEFAULT ? ` - ${selectedSort.order}` : ""
+        })`}
         onPress={() => {
           navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
         }}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.2 : 1,
-          },
-        ]}
-      >
-        <Text>Sort</Text>
-        {selectedSort.id !== DEFAULT && (
-          <Text>
-            {`(${SORT_OPTIONS[selectedSort.id] || selectedSort.id} - ${
-              selectedSort.order
-            })`}
-          </Text>
-        )}
-      </Pressable>
+      />
       {isLoading && (
         <View style={loaderContainer}>
           <ActivityIndicator size="large" />
