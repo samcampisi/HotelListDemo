@@ -15,9 +15,8 @@ import styles from "./HomeScreen.style";
 import { HotelsContext } from "../../contexts/HotelsContext";
 import useFetchHotels from "../../hooks/useFetchHotels";
 import { sortHotels } from "../../utils/sort/sortHotels";
-import { SORT_OPTIONS } from "../../constants/sortOptions";
-import { DEFAULT } from "../../constants/sortKeys";
 import TopButton from "../../components/TopButton";
+import { formatSort } from "../../utils/sort/formatSort";
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -70,9 +69,7 @@ const HomeScreen = ({ navigation }) => {
     <View testID={"HomeScreen"} style={container}>
       <TopButton
         title="SORT"
-        subtitle={`(${SORT_OPTIONS[selectedSort.id] || selectedSort.id}${
-          selectedSort.id !== DEFAULT ? ` - ${selectedSort.order}` : ""
-        })`}
+        subtitle={` (${formatSort(selectedSort)})`}
         onPress={() => {
           navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
         }}

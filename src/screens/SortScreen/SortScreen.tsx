@@ -1,39 +1,42 @@
 import React, { useContext } from "react";
 import { View, Text, Pressable } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
-import { SORT_OPTIONS } from "../../constants/sortOptions";
 import { HotelsContext } from "../../contexts/HotelsContext";
 
 import styles from "./SortScreen.style";
+import { formatSort } from "../../utils/sort/formatSort";
 
 const SortScreen = ({ testID, navigation }: SortScreenProps) => {
-  const { container } = styles;
+  const { container, optionContainer, text, indicator } = styles;
 
-  const { sortOptions, setSelectedSort } = useContext(HotelsContext);
+  const { sortOptions, setSelectedSort, selectedSort } =
+    useContext(HotelsContext);
 
   return (
     <View style={container} testID={testID}>
       {sortOptions.map((sortOption, index) => {
         return (
-          <View key={`${sortOption.id}-${index}`}>
-            <Pressable
-              testID={`${testID}-option-${index}`}
-              style={({ pressed }) => [
-                {
-                  opacity: pressed ? 0.2 : 1,
-                },
-              ]}
-              onPress={() => {
-                setSelectedSort(sortOption);
-                navigation.goBack();
-              }}
-            >
-              <Text>
-                {SORT_OPTIONS[sortOption.id] || sortOption.id}{" "}
-                {sortOption.order}
-              </Text>
-            </Pressable>
-          </View>
+          <Pressable
+            testID={`${testID}-option-${index}`}
+            key={`${sortOption.id}-${index}`}
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.2 : 1,
+              },
+              optionContainer,
+            ]}
+            onPress={() => {
+              setSelectedSort(sortOption);
+              navigation.goBack();
+            }}
+          >
+            <Text style={text}>{formatSort(sortOption)}</Text>
+
+            {selectedSort.id === sortOption.id &&
+              selectedSort.order === sortOption.order && (
+                <View style={indicator} />
+              )}
+          </Pressable>
         );
       })}
     </View>
