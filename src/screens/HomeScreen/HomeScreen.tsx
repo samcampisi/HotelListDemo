@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   FlatList,
   ListRenderItem,
   Image,
+  TextInput,
 } from 'react-native';
 import ErrorMessage from 'components/ErrorMessage';
 import HotelItem from 'components/HotelItem';
@@ -28,11 +29,18 @@ const HomeScreen = ({ navigation }) => {
   } = styles;
 
   const { isLoading, error, hotels, selectedSort } = useContext(HotelsContext);
+  const [keyword, setKeyword] = useState('');
 
   const onHotelPress = (hotel: Hotel) =>
     navigation.navigate(SCREEN_NAMES.HOTEL_DETAIL_SCREEN, hotel);
 
   const { fetchHotels } = useFetchHotels();
+
+  const filtered = hotels.filter((hotel: Hotel) =>
+    hotel.name.toLowerCase().includes(keyword.toLowerCase()),
+  );
+
+  const sorted = sortHotels(selectedSort, filtered);
 
   useEffect(() => {
     fetchHotels();
@@ -63,10 +71,9 @@ const HomeScreen = ({ navigation }) => {
 
   const keyExtractor = ({ id }: Hotel) => `${id}`;
 
-  const sorted = sortHotels(selectedSort, hotels);
-
   return (
     <View testID={'HomeScreen'} style={container}>
+      <TextInput value={keyword} onChangeText={setKeyword} />
       <TopButton
         title="SORT"
         subtitle={` (${formatSort(selectedSort)})`}
