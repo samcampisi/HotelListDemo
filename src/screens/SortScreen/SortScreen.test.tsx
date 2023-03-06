@@ -6,9 +6,11 @@ import SortScreen, { SortScreenProps } from "./SortScreen";
 import { HotelsContext, IHotelsContext } from "../../contexts/HotelsContext";
 import { DEFAULT, HIGH, LOW, STARS } from "../../constants/sortKeys";
 import { TSortKeys, TSortOrder } from "../../types/sort";
+import NAVIGATION_MOCK from "../../../__mocks__/navigation";
 
 const initialProps = {
   testID: "SortScreen",
+  navigation: NAVIGATION_MOCK,
 };
 
 const initialContext = {
