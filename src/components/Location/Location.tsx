@@ -1,10 +1,10 @@
-import React from "react";
-import { View, StyleProp, ViewStyle, ImageStyle, Text } from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import { Location as ILocation } from "../../interfaces/Hotel/Location";
+import React from 'react';
+import { View, StyleProp, ViewStyle, ImageStyle, Text } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { Location as ILocation } from 'interfaces/Hotel/Location';
 
-import styles from "./Location.style";
-import theme from "../../theme/theme";
+import styles from './Location.style';
+import theme from 'theme/theme';
 
 const Location = ({ location, testID, containerStyle }: LocationProps) => {
   const { container, text, mapView } = styles;
@@ -20,8 +20,7 @@ const Location = ({ location, testID, containerStyle }: LocationProps) => {
           longitude: longitude,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
-        }}
-      >
+        }}>
         <Marker
           coordinate={{
             latitude: latitude,

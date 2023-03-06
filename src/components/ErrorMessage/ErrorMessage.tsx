@@ -1,9 +1,9 @@
-import React from "react";
-import { View, StyleProp, ViewStyle, Text, Pressable } from "react-native";
+import React from 'react';
+import { View, StyleProp, ViewStyle, Text, Pressable } from 'react-native';
 
-import styles from "./ErrorMessage.style";
+import styles from './ErrorMessage.style';
 
-export const DEFAULT_MESSAGE = "Sorry! There was an error getting this content";
+export const DEFAULT_MESSAGE = 'Sorry! There was an error getting this content';
 
 const ErrorMessage = ({
   text,
@@ -27,8 +27,7 @@ const ErrorMessage = ({
           if (onRetryPress) {
             onRetryPress();
           }
-        }}
-      >
+        }}>
         <Text style={retryText}>Retry</Text>
       </Pressable>
     </View>

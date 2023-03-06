@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import { StyleSheet } from 'react-native';
+import theme from 'theme/theme';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   label: {
     color: theme.colors.main,
@@ -27,6 +27,6 @@ export default StyleSheet.create({
   ratingText: {
     color: theme.colors.neutral_light,
     fontSize: 12,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

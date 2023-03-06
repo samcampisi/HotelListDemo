@@ -1,10 +1,10 @@
-import { DEFAULT, LOW } from "../../constants/sortKeys";
-import { Hotel } from "../../interfaces/Hotel/Hotel";
-import { SortOption } from "../../interfaces/SortOption";
+import { DEFAULT, LOW } from 'constants/sortKeys';
+import { Hotel } from 'interfaces/Hotel/Hotel';
+import { SortOption } from 'interfaces/SortOption';
 
 export const sortHotels = (
   selectedSort: SortOption,
-  hotels: Hotel[]
+  hotels: Hotel[],
 ): Hotel[] => {
   return selectedSort.id === DEFAULT
     ? hotels

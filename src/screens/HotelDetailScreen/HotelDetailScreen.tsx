@@ -1,12 +1,12 @@
-import React from "react";
-import { View, Text, ScrollView } from "react-native";
-import Carousel from "../../components/Carousel";
-import InfoLine from "../../components/InfoLine";
-import Location from "../../components/Location";
-import Stars from "../../components/Stars";
-import UserRating from "../../components/UserRating";
-import { CURRENCY_SYMBOLS } from "../../constants/currencies";
-import styles from "./HotelDetailScreen.style";
+import React from 'react';
+import { View, Text, ScrollView } from 'react-native';
+import Carousel from 'components/Carousel';
+import InfoLine from 'components/InfoLine';
+import Location from 'components/Location';
+import Stars from 'components/Stars';
+import UserRating from 'components/UserRating';
+import { CURRENCY_SYMBOLS } from 'constants/currencies';
+import styles from './HotelDetailScreen.style';
 
 const HotelDetailScreen = ({ route }) => {
   const {
@@ -33,19 +33,19 @@ const HotelDetailScreen = ({ route }) => {
 
   return (
     <View style={container}>
-      <ScrollView testID={"HotelDetailScreen"}>
+      <ScrollView testID={'HotelDetailScreen'}>
         <Carousel gallery={gallery} />
         <View style={[section, infoDetails]}>
           <Stars value={stars} />
           <UserRating rating={userRating} />
           <InfoLine
             label={`Check-in: ${checkIn.from}-${checkIn.to}`}
-            icon={require("../../../assets/icons/clock.png")}
+            icon={require('assets/icons/clock.png')}
             iconStyle={customFlippedIcon}
           />
           <InfoLine
             label={`Check-out: ${checkOut.from}-${checkOut.to}`}
-            icon={require("../../../assets/icons/clock.png")}
+            icon={require('assets/icons/clock.png')}
           />
         </View>
         <View style={section}>
@@ -54,11 +54,11 @@ const HotelDetailScreen = ({ route }) => {
         <View style={[section, infoDetails, contactView]}>
           <InfoLine
             label={contact.phoneNumber}
-            icon={require("../../../assets/icons/phone.png")}
+            icon={require('assets/icons/phone.png')}
           />
           <InfoLine
             label={contact.email}
-            icon={require("../../../assets/icons/mail.png")}
+            icon={require('assets/icons/mail.png')}
           />
         </View>
       </ScrollView>

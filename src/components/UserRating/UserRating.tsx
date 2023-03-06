@@ -1,7 +1,7 @@
-import React from "react";
-import { View, StyleProp, ViewStyle, Text } from "react-native";
+import React from 'react';
+import { View, StyleProp, ViewStyle, Text } from 'react-native';
 
-import styles from "./UserRating.style";
+import styles from './UserRating.style';
 
 const TOP_RATING = 10;
 

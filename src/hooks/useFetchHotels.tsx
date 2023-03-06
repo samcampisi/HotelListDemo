@@ -1,6 +1,6 @@
-import { useCallback, useContext } from "react";
-import { HotelsContext } from "../contexts/HotelsContext";
-import { getSortOptions } from "../utils/sort/getSortOptions";
+import { useCallback, useContext } from 'react';
+import { HotelsContext } from 'contexts/HotelsContext';
+import { getSortOptions } from 'utils/sort/getSortOptions';
 
 const useFetchHotels = () => {
   const { setIsLoading, setError, setHotels, setSortOptions } =
@@ -13,7 +13,7 @@ const useFetchHotels = () => {
     try {
       const res = await (
         await fetch(
-          "https://run.mocky.io/v3/eef3c24d-5bfd-4881-9af7-0b404ce09507"
+          'https://run.mocky.io/v3/eef3c24d-5bfd-4881-9af7-0b404ce09507',
         )
       ).json();
 

@@ -1,6 +1,6 @@
-import { CheckingHours } from "./CheckingHours";
-import { Contact } from "./Contact";
-import { Location } from "./Location";
+import { CheckingHours } from './CheckingHours';
+import { Contact } from './Contact';
+import { Location } from './Location';
 
 export interface Hotel {
   id: number;

@@ -1,4 +1,4 @@
-import { TSortKeys, TSortOrder } from "../types/sort";
+import { TSortKeys, TSortOrder } from 'types/sort';
 
 export interface SortOption {
   id: TSortKeys;

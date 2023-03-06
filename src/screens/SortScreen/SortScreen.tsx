@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { View, Text, Pressable } from "react-native";
-import { NavigationProp } from "@react-navigation/native";
-import { HotelsContext } from "../../contexts/HotelsContext";
+import React, { useContext } from 'react';
+import { View, Text, Pressable } from 'react-native';
+import { NavigationProp } from '@react-navigation/native';
+import { HotelsContext } from 'contexts/HotelsContext';
 
-import styles from "./SortScreen.style";
-import { formatSort } from "../../utils/sort/formatSort";
+import styles from './SortScreen.style';
+import { formatSort } from 'utils/sort/formatSort';
 
 const SortScreen = ({ testID, navigation }: SortScreenProps) => {
   const { container, optionContainer, text, indicator } = styles;
@@ -28,8 +28,7 @@ const SortScreen = ({ testID, navigation }: SortScreenProps) => {
             onPress={() => {
               setSelectedSort(sortOption);
               navigation.goBack();
-            }}
-          >
+            }}>
             <Text style={text}>{formatSort(sortOption)}</Text>
 
             {selectedSort.id === sortOption.id &&

@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
-import { Hotel } from "../interfaces/Hotel/Hotel";
-import { SortOption } from "../interfaces/SortOption";
-import { DEFAULT, LOW } from "../constants/sortKeys";
-import { TSortKeys, TSortOrder } from "../types/sort";
+import { createContext, useState } from 'react';
+import { Hotel } from 'interfaces/Hotel/Hotel';
+import { SortOption } from 'interfaces/SortOption';
+import { DEFAULT, LOW } from 'constants/sortKeys';
+import { TSortKeys, TSortOrder } from 'types/sort';
 
 export interface IHotelsContext {
   isLoading: boolean;
@@ -42,8 +42,7 @@ const HotelsProvider = ({ children }) => {
         setSortOptions,
         selectedSort,
         setSelectedSort,
-      }}
-    >
+      }}>
       {children}
     </HotelsContext.Provider>
   );
