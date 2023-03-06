@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render } from "@testing-library/react-native";
+import { fireEvent, render } from "@testing-library/react-native";
 
 import SortScreen, { SortScreenProps } from "./SortScreen";
 import { HotelsContext, IHotelsContext } from "../../contexts/HotelsContext";
@@ -15,18 +15,18 @@ const initialProps = {
 
 const initialContext = {
   isLoading: false,
-  setIsLoading: () => {},
+  setIsLoading: jest.fn(),
   error: null,
-  setError: () => {},
+  setError: jest.fn(),
   hotels: [],
-  setHotels: () => {},
+  setHotels: jest.fn(),
   sortOptions: [],
-  setSortOptions: () => {},
+  setSortOptions: jest.fn(),
   selectedSort: {
     id: DEFAULT as TSortKeys,
     order: "" as TSortOrder,
   },
-  setSelectedSort: () => {},
+  setSelectedSort: jest.fn(),
 };
 
 const defaultSortOptions = [
@@ -85,6 +85,33 @@ describe("Given the SortScreen component", () => {
       });
 
       expect(queryByTestId(`${initialProps.testID}-indicator-1`)).toBeFalsy();
+    });
+  });
+
+  describe("When selecting an option", () => {
+    it("Goes back to the previous screen", () => {
+      const { getByTestId } = renderComponent(initialProps, {
+        ...initialContext,
+        sortOptions: defaultSortOptions,
+      });
+
+      const option = getByTestId(`${initialProps.testID}-option-0`);
+      fireEvent.press(option);
+
+      expect(initialProps.navigation.goBack).toHaveBeenCalledTimes(1);
+    });
+    it("Sets the selected sort", () => {
+      const { getByTestId } = renderComponent(initialProps, {
+        ...initialContext,
+        sortOptions: defaultSortOptions,
+      });
+
+      const option = getByTestId(`${initialProps.testID}-option-1`);
+      fireEvent.press(option);
+
+      expect(initialContext.setSelectedSort).toHaveBeenCalledWith(
+        defaultSortOptions[1]
+      );
     });
   });
 });
