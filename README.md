@@ -8,8 +8,8 @@ This is a sample app to fetch and display a list of hotels and their detail page
 
 It features 2 screens:
 
-- Home screen with the hotel list
-- Hotel Detail screen
+- Home screen with the hotel list, you can sort by stars, price or rating and filter by name
+- Hotel Detail screen with simple image carousel, hotel info and map to locate it
 
 So far the tests include:
 
@@ -31,6 +31,7 @@ So far the tests include:
 - Make sure you have no other packagers running. In the console:
 - `npx expo start`
 - Follow the expo instructions to run on iOS or Android if you like
+- ! To test on your device, you need to have the Expo Go app installed and scan the QR Code on your terminal with the camera.
 
 ## Troubleshooting
 
@@ -45,3 +46,4 @@ So far the tests include:
 
 - Add a feature to zoom in on the images or a full image view
 - Add tests for HomeScreen
+- Add more detail to the search bar
