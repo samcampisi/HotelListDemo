@@ -24,4 +24,7 @@ export default StyleSheet.create({
     height: 40,
     alignSelf: 'center',
   },
+  emptyComponentText: {
+    textAlign: 'center',
+  },
 });

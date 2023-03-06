@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import { HotelsContext } from 'contexts/HotelsContext';
 import useFetchHotels from 'hooks/useFetchHotels';
 import { sortHotels } from 'utils/sort/sortHotels';
 import TopButton from 'components/TopButton';
+import Searchbar from 'components/Searchbar';
 import { formatSort } from 'utils/sort/formatSort';
 
 const HomeScreen = ({ navigation }) => {
@@ -25,21 +26,29 @@ const HomeScreen = ({ navigation }) => {
     headerText,
     emptyComponentIcon,
     emptyComponentContainer,
+    emptyComponentText,
   } = styles;
 
   const { isLoading, error, hotels, selectedSort } = useContext(HotelsContext);
+  const [keyword, setKeyword] = useState('');
 
   const onHotelPress = (hotel: Hotel) =>
     navigation.navigate(SCREEN_NAMES.HOTEL_DETAIL_SCREEN, hotel);
 
   const { fetchHotels } = useFetchHotels();
 
+  const filtered = hotels.filter((hotel: Hotel) =>
+    hotel.name.toLowerCase().includes(keyword.toLowerCase()),
+  );
+
+  const sorted = sortHotels(selectedSort, filtered);
+
   useEffect(() => {
     fetchHotels();
   }, []);
 
   const renderHeader = () => {
-    const total = hotels?.length;
+    const total = sorted?.length;
     return !isLoading && total ? (
       <Text style={headerText}>{total} hotels found</Text>
     ) : null;
@@ -52,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
           source={require('assets/icons/search.png')}
           style={emptyComponentIcon}
         />
-        <Text>No hotels were found</Text>
+        <Text style={emptyComponentText}>No hotels were found</Text>
       </View>
     ) : null;
   };
@@ -63,17 +72,24 @@ const HomeScreen = ({ navigation }) => {
 
   const keyExtractor = ({ id }: Hotel) => `${id}`;
 
-  const sorted = sortHotels(selectedSort, hotels);
-
   return (
     <View testID={'HomeScreen'} style={container}>
-      <TopButton
-        title="SORT"
-        subtitle={` (${formatSort(selectedSort)})`}
-        onPress={() => {
-          navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
+      <Searchbar
+        value={keyword}
+        onTextChange={(text: string) => {
+          setKeyword(text);
         }}
       />
+      {Boolean(sorted.length) && (
+        <TopButton
+          title="SORT"
+          subtitle={` (${formatSort(selectedSort)})`}
+          onPress={() => {
+            navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
+          }}
+        />
+      )}
+
       {isLoading && (
         <View style={loaderContainer}>
           <ActivityIndicator size="large" />
@@ -94,7 +110,7 @@ const HomeScreen = ({ navigation }) => {
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={
-          hotels.length ? undefined : emptyComponentContainer
+          sorted.length ? undefined : emptyComponentContainer
         }
       />
     </View>
