@@ -6,7 +6,6 @@ import {
   FlatList,
   ListRenderItem,
   Image,
-  TextInput,
 } from 'react-native';
 import ErrorMessage from 'components/ErrorMessage';
 import HotelItem from 'components/HotelItem';
@@ -17,6 +16,7 @@ import { HotelsContext } from 'contexts/HotelsContext';
 import useFetchHotels from 'hooks/useFetchHotels';
 import { sortHotels } from 'utils/sort/sortHotels';
 import TopButton from 'components/TopButton';
+import Searchbar from 'components/Searchbar';
 import { formatSort } from 'utils/sort/formatSort';
 
 const HomeScreen = ({ navigation }) => {
@@ -47,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
   }, []);
 
   const renderHeader = () => {
-    const total = hotels?.length;
+    const total = sorted?.length;
     return !isLoading && total ? (
       <Text style={headerText}>{total} hotels found</Text>
     ) : null;
@@ -73,7 +73,12 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View testID={'HomeScreen'} style={container}>
-      <TextInput value={keyword} onChangeText={setKeyword} />
+      <Searchbar
+        value={keyword}
+        onTextChange={(text: string) => {
+          setKeyword(text);
+        }}
+      />
       <TopButton
         title="SORT"
         subtitle={` (${formatSort(selectedSort)})`}
