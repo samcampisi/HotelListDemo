@@ -9,7 +9,7 @@ export default StyleSheet.create({
     borderBottomLeftRadius: 4,
   },
   defaultImage: {
-    tintColor: theme.colors.neutral_grey,
+    tintColor: theme.colors.empty_grey,
     maxWidth: '100%',
     resizeMode: 'center',
   },

@@ -26,6 +26,7 @@ const HomeScreen = ({ navigation }) => {
     headerText,
     emptyComponentIcon,
     emptyComponentContainer,
+    emptyComponentText,
   } = styles;
 
   const { isLoading, error, hotels, selectedSort } = useContext(HotelsContext);
@@ -60,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
           source={require('assets/icons/search.png')}
           style={emptyComponentIcon}
         />
-        <Text>No hotels were found</Text>
+        <Text style={emptyComponentText}>No hotels were found</Text>
       </View>
     ) : null;
   };
@@ -79,13 +80,16 @@ const HomeScreen = ({ navigation }) => {
           setKeyword(text);
         }}
       />
-      <TopButton
-        title="SORT"
-        subtitle={` (${formatSort(selectedSort)})`}
-        onPress={() => {
-          navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
-        }}
-      />
+      {Boolean(sorted.length) && (
+        <TopButton
+          title="SORT"
+          subtitle={` (${formatSort(selectedSort)})`}
+          onPress={() => {
+            navigation.navigate(SCREEN_NAMES.SORT_SCREEN);
+          }}
+        />
+      )}
+
       {isLoading && (
         <View style={loaderContainer}>
           <ActivityIndicator size="large" />
@@ -106,7 +110,7 @@ const HomeScreen = ({ navigation }) => {
         keyExtractor={keyExtractor}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={
-          hotels.length ? undefined : emptyComponentContainer
+          sorted.length ? undefined : emptyComponentContainer
         }
       />
     </View>
