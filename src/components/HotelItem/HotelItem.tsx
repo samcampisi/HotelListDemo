@@ -1,12 +1,12 @@
-import React from "react";
-import { View, Text, StyleProp, ViewStyle, Pressable } from "react-native";
-import { CURRENCY_SYMBOLS } from "../../constants/currencies";
-import { Hotel } from "../../interfaces/Hotel/Hotel";
-import HotelImage from "../HotelImage";
-import InfoLine from "../InfoLine";
-import Stars from "../Stars";
+import React from 'react';
+import { View, Text, StyleProp, ViewStyle, Pressable } from 'react-native';
+import { CURRENCY_SYMBOLS } from 'constants/currencies';
+import { Hotel } from 'interfaces/Hotel/Hotel';
+import HotelImage from 'components/HotelImage';
+import InfoLine from 'components/InfoLine';
+import Stars from 'components/Stars';
 
-import styles from "./HotelItem.style";
+import styles from './HotelItem.style';
 
 const HotelItem = ({
   hotel,
@@ -39,8 +39,7 @@ const HotelItem = ({
           if (onPress) {
             onPress(hotel);
           }
-        }}
-      >
+        }}>
         <View style={imageContainer}>
           <HotelImage url={gallery[0]} />
         </View>
@@ -52,11 +51,11 @@ const HotelItem = ({
             <Stars value={stars} />
             <InfoLine
               label={`${location.address}, ${location.city}`}
-              icon={require("../../../assets/icons/location.png")}
+              icon={require('assets/icons/location.png')}
             />
             <InfoLine
               label={String(userRating)}
-              icon={require("../../../assets/icons/rating.png")}
+              icon={require('assets/icons/rating.png')}
             />
           </View>
           <View style={pricetag}>

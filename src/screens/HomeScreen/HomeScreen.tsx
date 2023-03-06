@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from 'react';
 import {
   View,
   Text,
@@ -6,17 +6,17 @@ import {
   FlatList,
   ListRenderItem,
   Image,
-} from "react-native";
-import ErrorMessage from "../../components/ErrorMessage";
-import HotelItem from "../../components/HotelItem";
-import { Hotel } from "../../interfaces/Hotel/Hotel";
-import SCREEN_NAMES from "../../constants/screenNames";
-import styles from "./HomeScreen.style";
-import { HotelsContext } from "../../contexts/HotelsContext";
-import useFetchHotels from "../../hooks/useFetchHotels";
-import { sortHotels } from "../../utils/sort/sortHotels";
-import TopButton from "../../components/TopButton";
-import { formatSort } from "../../utils/sort/formatSort";
+} from 'react-native';
+import ErrorMessage from 'components/ErrorMessage';
+import HotelItem from 'components/HotelItem';
+import { Hotel } from 'interfaces/Hotel/Hotel';
+import SCREEN_NAMES from 'constants/screenNames';
+import styles from './HomeScreen.style';
+import { HotelsContext } from 'contexts/HotelsContext';
+import useFetchHotels from 'hooks/useFetchHotels';
+import { sortHotels } from 'utils/sort/sortHotels';
+import TopButton from 'components/TopButton';
+import { formatSort } from 'utils/sort/formatSort';
 
 const HomeScreen = ({ navigation }) => {
   const {
@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
     return !isLoading ? (
       <View>
         <Image
-          source={require("../../../assets/icons/search.png")}
+          source={require('assets/icons/search.png')}
           style={emptyComponentIcon}
         />
         <Text>No hotels were found</Text>
@@ -66,7 +66,7 @@ const HomeScreen = ({ navigation }) => {
   const sorted = sortHotels(selectedSort, hotels);
 
   return (
-    <View testID={"HomeScreen"} style={container}>
+    <View testID={'HomeScreen'} style={container}>
       <TopButton
         title="SORT"
         subtitle={` (${formatSort(selectedSort)})`}

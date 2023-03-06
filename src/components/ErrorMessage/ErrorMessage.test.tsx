@@ -1,38 +1,38 @@
-import React from "react";
+import React from 'react';
 
-import { fireEvent, render } from "@testing-library/react-native";
+import { fireEvent, render } from '@testing-library/react-native';
 
 import ErrorMessage, {
   DEFAULT_MESSAGE,
   ErrorMessageProps,
-} from "./ErrorMessage";
+} from './ErrorMessage';
 
 const initialProps = {
   onRetryPress: jest.fn(),
-  testID: "ErrorMessage",
+  testID: 'ErrorMessage',
 };
 
 const renderComponent = (props: ErrorMessageProps) => {
   return render(<ErrorMessage {...props} />);
 };
 
-describe("Given the ErrorMessage component", () => {
-  describe("When rendered", () => {
-    it("Renders correctly with the default message", () => {
+describe('Given the ErrorMessage component', () => {
+  describe('When rendered', () => {
+    it('Renders correctly with the default message', () => {
       const { getByText } = renderComponent(initialProps);
 
       expect(getByText(DEFAULT_MESSAGE)).toBeDefined();
     });
 
-    it("Renders correctly with a given message", () => {
-      const message = "Custom message";
+    it('Renders correctly with a given message', () => {
+      const message = 'Custom message';
       const { getByText } = renderComponent({ ...initialProps, text: message });
 
       expect(getByText(message)).toBeDefined();
     });
 
-    it("Renders correctly with a given style", () => {
-      const style = { backgroundColor: "red" };
+    it('Renders correctly with a given style', () => {
+      const style = { backgroundColor: 'red' };
 
       const { getByTestId } = renderComponent({
         ...initialProps,
@@ -43,8 +43,8 @@ describe("Given the ErrorMessage component", () => {
     });
   });
 
-  describe("When pressed", () => {
-    it("Fires the onRetryPress prop", () => {
+  describe('When pressed', () => {
+    it('Fires the onRetryPress prop', () => {
       const { getByTestId } = renderComponent(initialProps);
 
       const retryButton = getByTestId(`${initialProps.testID}-retry`);

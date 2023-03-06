@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import { StyleSheet } from 'react-native';
+import theme from 'theme/theme';
 
 export default StyleSheet.create({
   cardContainer: {
@@ -15,32 +15,32 @@ export default StyleSheet.create({
     borderRadius: 4,
   },
   horizontal: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   imageContainer: {
-    width: "50%",
-    height: "100%",
+    width: '50%',
+    height: '100%',
   },
   infoArea: {
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     paddingVertical: 12,
     paddingHorizontal: 16,
   },
   title: {
     fontSize: 14,
     lineHeight: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: theme.colors.main,
   },
   pricetag: {
     backgroundColor: theme.colors.accent,
     padding: 8,
     borderRadius: 4,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
   },
   pricetagText: {
     color: theme.colors.neutral_light,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

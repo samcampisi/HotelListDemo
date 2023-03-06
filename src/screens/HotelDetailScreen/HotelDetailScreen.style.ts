@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import { StyleSheet } from 'react-native';
+import theme from 'theme/theme';
 
 export default StyleSheet.create({
   container: {
@@ -19,18 +19,18 @@ export default StyleSheet.create({
     transform: [{ scaleX: -1 }],
   },
   bottom: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     backgroundColor: theme.colors.secondary,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
     height: 64,
   },
   bottomText: {
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.colors.neutral_light,
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

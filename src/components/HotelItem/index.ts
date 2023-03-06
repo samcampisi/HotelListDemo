@@ -1,3 +1,3 @@
-import HotelItem from "./HotelItem";
+import HotelItem from './HotelItem';
 
 export default HotelItem;

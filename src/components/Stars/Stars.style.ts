@@ -1,9 +1,9 @@
-import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import { StyleSheet } from 'react-native';
+import theme from 'theme/theme';
 
 export default StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 4,
   },
   empty: {

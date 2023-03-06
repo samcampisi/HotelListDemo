@@ -1,7 +1,7 @@
-import React from "react";
-import { View, StyleProp, ViewStyle, Image, ImageStyle } from "react-native";
+import React from 'react';
+import { View, StyleProp, ViewStyle, Image, ImageStyle } from 'react-native';
 
-import styles from "./Stars.style";
+import styles from './Stars.style';
 
 const TOTAL_STARS = 5;
 
@@ -13,7 +13,7 @@ const Stars = ({ value, testID, containerStyle, iconStyle }: StarsProps) => {
       {Array.from(Array(TOTAL_STARS)).map((_, index) => {
         return (
           <Image
-            source={require("../../../assets/icons/star.png")}
+            source={require('assets/icons/star.png')}
             key={index}
             style={[icon, iconStyle, index + 1 <= value ? filled : empty]}
           />

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { StyleProp, Image, ImageStyle, ImageResizeMode } from "react-native";
+import React, { useState } from 'react';
+import { StyleProp, Image, ImageStyle } from 'react-native';
 
-import styles from "./HotelImage.style";
+import styles from './HotelImage.style';
 
 const HotelImage = ({ url, testID, imageStyle }: HotelImageProps) => {
   const { image, defaultImage } = styles;
@@ -10,9 +10,7 @@ const HotelImage = ({ url, testID, imageStyle }: HotelImageProps) => {
 
   return (
     <Image
-      source={
-        imageError ? require("../../../assets/defaultHotel.png") : { uri: url }
-      }
+      source={imageError ? require('assets/defaultHotel.png') : { uri: url }}
       style={[image, imageError && defaultImage, imageStyle]}
       onError={() => setImageError(true)}
       testID={testID}

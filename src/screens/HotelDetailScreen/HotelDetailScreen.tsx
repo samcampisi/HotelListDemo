@@ -40,12 +40,12 @@ const HotelDetailScreen = ({ route }) => {
           <UserRating rating={userRating} />
           <InfoLine
             label={`Check-in: ${checkIn.from}-${checkIn.to}`}
-            icon={require('../../../assets/icons/clock.png')}
+            icon={require('assets/icons/clock.png')}
             iconStyle={customFlippedIcon}
           />
           <InfoLine
             label={`Check-out: ${checkOut.from}-${checkOut.to}`}
-            icon={require('../../../assets/icons/clock.png')}
+            icon={require('assets/icons/clock.png')}
           />
         </View>
         <View style={section}>
@@ -54,11 +54,11 @@ const HotelDetailScreen = ({ route }) => {
         <View style={[section, infoDetails, contactView]}>
           <InfoLine
             label={contact.phoneNumber}
-            icon={require('../../../assets/icons/phone.png')}
+            icon={require('assets/icons/phone.png')}
           />
           <InfoLine
             label={contact.email}
-            icon={require('../../../assets/icons/mail.png')}
+            icon={require('assets/icons/mail.png')}
           />
         </View>
       </ScrollView>

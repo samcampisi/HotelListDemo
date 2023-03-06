@@ -1,3 +1,3 @@
-import HotelDetailScreen from "./HotelDetailScreen";
+import HotelDetailScreen from './HotelDetailScreen';
 
 export default HotelDetailScreen;

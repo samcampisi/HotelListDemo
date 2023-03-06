@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -7,9 +7,9 @@ import {
   Image,
   ImageSourcePropType,
   ImageStyle,
-} from "react-native";
+} from 'react-native';
 
-import styles from "./InfoLine.style";
+import styles from './InfoLine.style';
 
 const InfoLine = ({
   icon,

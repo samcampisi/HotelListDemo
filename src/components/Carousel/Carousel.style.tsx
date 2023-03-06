@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import { StyleSheet } from 'react-native';
+import theme from 'theme/theme';
 
 export default StyleSheet.create({
   container: {
@@ -7,13 +7,13 @@ export default StyleSheet.create({
     backgroundColor: theme.colors.neutral_light,
   },
   image: {
-    width: "100%",
+    width: '100%',
     height: 320,
   },
   indicatorsContainer: {
-    justifyContent: "center",
-    flexDirection: "row",
-    position: "absolute",
+    justifyContent: 'center',
+    flexDirection: 'row',
+    position: 'absolute',
     zIndex: 1,
     bottom: 16,
     left: 0,

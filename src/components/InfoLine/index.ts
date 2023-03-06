@@ -1,3 +1,3 @@
-import InfoLine from "./InfoLine";
+import InfoLine from './InfoLine';
 
 export default InfoLine;

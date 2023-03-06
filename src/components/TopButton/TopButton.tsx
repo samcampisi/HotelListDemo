@@ -1,7 +1,7 @@
-import React from "react";
-import { View, StyleProp, ViewStyle, Text, Pressable } from "react-native";
+import React from 'react';
+import { View, StyleProp, ViewStyle, Text, Pressable } from 'react-native';
 
-import styles from "./TopButton.style";
+import styles from './TopButton.style';
 
 const TopButton = ({
   title,
@@ -25,8 +25,7 @@ const TopButton = ({
             opacity: onPress && pressed ? 0.2 : 1,
           },
           textContainer,
-        ]}
-      >
+        ]}>
         <Text style={text}>{title}</Text>
         {subtitle && <Text>{subtitle}</Text>}
       </Pressable>

@@ -1,3 +1,3 @@
-import HotelImage from "./HotelImage";
+import HotelImage from './HotelImage';
 
 export default HotelImage;

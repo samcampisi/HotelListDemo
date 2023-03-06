@@ -1,3 +1,3 @@
-import SortScreen from "./SortScreen";
+import SortScreen from './SortScreen';
 
 export default SortScreen;

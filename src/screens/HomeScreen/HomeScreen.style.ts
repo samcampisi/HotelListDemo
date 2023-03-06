@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import { StyleSheet } from 'react-native';
+import theme from 'theme/theme';
 
 export default StyleSheet.create({
   container: {
@@ -7,21 +7,21 @@ export default StyleSheet.create({
   },
   loaderContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   headerText: {
     color: theme.colors.main,
-    textAlign: "center",
+    textAlign: 'center',
     marginVertical: 16,
   },
   emptyComponentContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   emptyComponentIcon: {
     width: 40,
     height: 40,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
 });

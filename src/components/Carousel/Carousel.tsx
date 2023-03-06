@@ -1,22 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 import {
-  Image,
   View,
   StyleProp,
   ImageStyle,
   ViewStyle,
   ImageResizeMode,
-} from "react-native";
-import PagerView, { PagerViewOnPageScrollEvent } from "react-native-pager-view";
-import HotelImage from "../HotelImage";
+} from 'react-native';
+import PagerView, { PagerViewOnPageScrollEvent } from 'react-native-pager-view';
+import HotelImage from 'components/HotelImage';
 
-import styles from "./Carousel.style";
+import styles from './Carousel.style';
 
 const Carousel = ({
   gallery,
   testID,
   imageStyle,
-  imageResize,
   indicatorsStyle,
 }: CarouselProps) => {
   const [indexPage, setIndexPage] = useState(0);
@@ -38,8 +36,7 @@ const Carousel = ({
       {gallery.length > 1 && (
         <View
           style={[styles.indicatorsContainer, indicatorsStyle]}
-          testID={`${testID}-dots`}
-        >
+          testID={`${testID}-dots`}>
           {gallery.map((_, index: number) => {
             return RenderIndicators(index);
           })}
@@ -54,8 +51,7 @@ const Carousel = ({
         overdrag={true}
         onPageScroll={(event: PagerViewOnPageScrollEvent) => {
           setIndexPage(event?.nativeEvent?.position);
-        }}
-      >
+        }}>
         {gallery.map((item: string, index: number) => {
           return (
             <View key={index} testID={`${testID}-item-${index}`}>
